@@ -3,7 +3,6 @@
 //  ChangeChair
 //
 //  Created by nekonlu on 2022/10/03.
-//  
 //
 
 import SwiftUI
@@ -12,6 +11,7 @@ struct ConfigureView: View {
     
     @State var vertical: String = ""
     @State var horizontal: String = ""
+    @State var isShow: Bool = true
     @ObservedObject var setChairLayout = SetChairLayout()
     
     var body: some View {
@@ -31,20 +31,21 @@ struct ConfigureView: View {
                 .padding()
                 
                 Button {
-                    // intend to fix
-//                    setChairLayout.pushedConfirmButton(
-//                        numVertical: Int(vertical)!,
-//                        numHorizontal: Int(horizontal)!)
-//                    print(setChairLayout.chairTable)
-                    print("aaa")
+                    // TODO: fix optional error
+                    
+                    setChairLayout.pushedConfirmButton(
+                        numVertical: Int(vertical)!,
+                        numHorizontal: Int(horizontal)!)
+                    self.isShow = true
                 } label: {
                     Text("Done")
                 }
-
+                
             }
             .navigationTitle("Random Chair")
         }
     }
+    
 }
 
 struct ConfigureView_Previews: PreviewProvider {

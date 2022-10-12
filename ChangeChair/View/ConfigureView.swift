@@ -11,7 +11,7 @@ struct ConfigureView: View {
     
     @State var vertical: String = ""
     @State var horizontal: String = ""
-    @State var isShow: Bool = true
+    @State var isShow: Bool = false
     @ObservedObject var setChairLayout = SetChairLayout()
     
     var body: some View {
@@ -30,20 +30,32 @@ struct ConfigureView: View {
                 }
                 .padding()
                 
+                // TODO: 必要事項を全て入力したらボタンが出現するようにする
+                
                 Button {
-                    // TODO: fix optional error
-                    
-                    setChairLayout.pushedConfirmButton(
-                        numVertical: Int(vertical)!,
-                        numHorizontal: Int(horizontal)!)
-                    self.isShow = true
+                    toIntSafety()
                 } label: {
                     Text("Done")
                 }
-                
+                .sheet(isPresented: $isShow) {
+                    ChangedChairView()
+                }
             }
             .navigationTitle("Random Chair")
         }
+    }
+    
+    func toIntSafety() {
+        
+        guard let v = Int(vertical), let h = Int(horizontal) else {
+            self.isShow = false
+            return
+        }
+        self.isShow.toggle()
+        
+        setChairLayout.pushedConfirmButton(
+            numVertical: v,
+            numHorizontal: h)
     }
     
 }

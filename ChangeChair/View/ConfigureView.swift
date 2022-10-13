@@ -31,26 +31,31 @@ struct ConfigureView: View {
                 .padding()
                 
                 // TODO: 必要事項を全て入力したらボタンが出現するようにする
-                
+                                                    
                 Button {
-                    toIntSafety()
+                    setSafety()
                 } label: {
                     Text("Done")
                 }
-                .sheet(isPresented: $isShow) {
-                    ChangedChairView()
+                .fullScreenCover(isPresented: $isShow) {
+                    ChangedChairView(setChairLayout: setChairLayout)
                 }
             }
             .navigationTitle("Random Chair")
         }
     }
     
-    func toIntSafety() {
+    func setSafety() {
         
         guard let v = Int(vertical), let h = Int(horizontal) else {
             self.isShow = false
             return
         }
+        
+        guard v > 0 && h > 0 else {
+            return
+        }
+        
         self.isShow.toggle()
         
         setChairLayout.pushedConfirmButton(

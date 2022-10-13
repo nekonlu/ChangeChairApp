@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95ACDA6728F6D38800C0C3A3 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACDA6628F6D38800C0C3A3 /* test.swift */; };
 		95D06BF428EC551400275D7C /* ChangedChairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D06BF328EC551400275D7C /* ChangedChairView.swift */; };
 		95FBA8C328EAEC1A00DB56B9 /* ChangeChairApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBA8C228EAEC1A00DB56B9 /* ChangeChairApp.swift */; };
 		95FBA8C528EAEC1A00DB56B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBA8C428EAEC1A00DB56B9 /* ContentView.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		95ACDA6628F6D38800C0C3A3 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		95D06BF328EC551400275D7C /* ChangedChairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangedChairView.swift; sourceTree = "<group>"; };
 		95FBA8BF28EAEC1A00DB56B9 /* ChangeChair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeChair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FBA8C228EAEC1A00DB56B9 /* ChangeChairApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeChairApp.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				95FBA8C628EAEC1C00DB56B9 /* Assets.xcassets */,
 				95FBA8C828EAEC1C00DB56B9 /* Preview Content */,
 				95FBA8D228EAEF5100DB56B9 /* MyPlayground.playground */,
+				95ACDA6628F6D38800C0C3A3 /* test.swift */,
 			);
 			path = ChangeChair;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95FBA8C528EAEC1A00DB56B9 /* ContentView.swift in Sources */,
+				95ACDA6728F6D38800C0C3A3 /* test.swift in Sources */,
 				95FBA8C328EAEC1A00DB56B9 /* ChangeChairApp.swift in Sources */,
 				95FBA8D428EB231000DB56B9 /* ChangeChairLogic.swift in Sources */,
 				95FBA8D628EB232F00DB56B9 /* ConfigureView.swift in Sources */,

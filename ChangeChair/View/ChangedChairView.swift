@@ -13,14 +13,16 @@ struct ChangedChairView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var setChairLayout: SetChairLayout
     
+    let desplayId_ViewSize: CGFloat = 40
+    
     var body: some View {
         
-        VStack {
+        VStack(alignment: .center) {
 //            Button {
 //                // Preview Only
 //                setChairLayout.pushedConfirmButton(
 //                    numVertical: 5,
-//                    numHorizontal: 5)
+//                    numHorqizontal: 5)
 //                // End
 //
 //
@@ -33,6 +35,7 @@ struct ChangedChairView: View {
                 .font(.caption)
                 .fontWeight(.bold)
             
+            
             ForEach(setChairLayout.chairTable, id: \.self) { tate in
                 HStack {
                     ForEach(tate, id: \.self) { yoko in
@@ -40,14 +43,13 @@ struct ChangedChairView: View {
                             .font(.title3)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .frame(width: 50, height: 50)
+                            .frame(width: desplayId_ViewSize,
+                                   height: desplayId_ViewSize)
                             .background(
                                 RoundedRectangle(cornerRadius: 10)
                             )
                     }
                 }
-                
-                
             }
             
             Text("BACK")
@@ -62,7 +64,6 @@ struct ChangedChairView: View {
                 Text("戻る")
                     
             }
-            
         }
     }
 }

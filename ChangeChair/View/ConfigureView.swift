@@ -23,8 +23,12 @@ struct ConfigureView: View {
                         .fontWeight(.bold)
                     HStack {
                         TextField("Vertical", text: $vertical)
+                            .keyboardType(.numberPad)
+                            .multilineTextAlignment(.center)
                         Image(systemName: "multiply")
                         TextField("Horizontal", text: $horizontal)
+                            .keyboardType(.numberPad)
+                            .multilineTextAlignment(.center)
                     }
                     
                 }

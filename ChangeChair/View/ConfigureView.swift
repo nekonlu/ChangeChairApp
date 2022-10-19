@@ -33,7 +33,10 @@ struct ConfigureView: View {
                 // TODO: 必要事項を全て入力したらボタンが出現するようにする
                                                     
                 Button {
-                    setSafety()
+                    setChairLayout.pushedConfirmButton(
+                        numVertical: Int(vertical)!,
+                        numHorizontal: Int(horizontal)!)
+                    self.isShow.toggle()
                 } label: {
                     Text("Done")
                 }

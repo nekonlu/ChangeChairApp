@@ -35,7 +35,7 @@ struct ConfigureView: View {
                 .padding()
                 
                 // TODO: 必要事項を全て入力したらボタンが出現するようにする
-                                                    
+                
                 Button {
                     setSafety()
                 } label: {
@@ -44,27 +44,30 @@ struct ConfigureView: View {
                 .fullScreenCover(isPresented: $isShow) {
                     ChangedChairView(setChairLayout: setChairLayout)
                 }
+                
+                NavigationLink(
+                    destination:SetUserAttrView(totalNum: setSafety()))
+                {
+                    Text("Set User Attribute")
+                }
+                
+                
             }
             .navigationTitle("Random Chair")
         }
     }
     
-    func setSafety() {
+    func setSafety() -> Int {
         
         guard let v = Int(vertical), let h = Int(horizontal) else {
-            self.isShow = false
-            return
+            return 1
         }
         
         guard v > 0 && h > 0 else {
-            return
+            return 1
         }
         
-        self.isShow.toggle()
-        
-        setChairLayout.pushedConfirmButton(
-            numVertical: v,
-            numHorizontal: h)
+        return v * h
     }
     
 }

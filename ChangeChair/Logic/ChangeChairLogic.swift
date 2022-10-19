@@ -8,8 +8,6 @@
 
 import UIKit
 
-import UIKit
-
 class SetChairLayout: ObservableObject {
     
     @Published var numVertical: Int = 0

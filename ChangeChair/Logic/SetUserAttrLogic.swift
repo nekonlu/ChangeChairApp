@@ -1,9 +1,17 @@
+//
+//  SetUserAttr.swift
+//  ChangeChair
+//
+//  Created by nekonlu on 2022/10/18.
+//  
+//
+
 import UIKit
 
-class SetUserAttr {
-    var userID: Int
-    var studentID: Int = 0
-    var name: String = ""
+class SetUserAttr: ObservableObject {
+    @Published var userID: Int
+    @Published var studentID: Int = 0
+    @Published var name: String = ""
     
     init(userID: Int) {
         self.userID = userID
@@ -18,4 +26,4 @@ class SetUserAttr {
     }
 }
 
-var setUserAttr = SetUserAttr(userID: 1)
+

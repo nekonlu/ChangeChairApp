@@ -14,6 +14,8 @@ struct ConfigureView: View {
     @State var isShow: Bool = false
     @ObservedObject var setChairLayout = SetChairLayout()
     
+    
+    
     var body: some View {
         NavigationView {
             VStack {

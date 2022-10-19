@@ -10,18 +10,18 @@ import SwiftUI
 
 struct SetUserAttrDetailView: View {
     
-    @Environment(\.managedObjectContext) private var context
-    @Environment(\.presentationMode) var presentationMode
-    
-//    @FetchRequest(
-//        entity: UserAttr.entity(),
-//        sortDescriptors: [NSSortDescriptor(keyPath: \UserAttr.userID, ascending: true)]
-//    ) private var userAttr: FetchedResults<UserAttr>
-    
-    
     @State var userID: Int
     @State var studentID: String = ""
     @State var name: String = ""
+    
+    @Environment(\.managedObjectContext) private var context
+    
+    @FetchRequest(
+        sortDescriptors: [],
+        predicate: nil
+    ) private var userAttr: FetchedResults<UserAttr>
+    
+    
     
     var body: some View {
         VStack {
@@ -38,21 +38,51 @@ struct SetUserAttrDetailView: View {
             TextField("Student Name", text: $name)
             
             Button {
-                let newUserAttr = UserAttr(context: context)
-                newUserAttr.id = UUID()
-                newUserAttr.userID = Int32(userID)
-                newUserAttr.studentID = Int32(studentID)!
-                newUserAttr.name = name
-                
-                try? context.save()
-                
-                presentationMode.wrappedValue.dismiss()
+                saveUserAttr(studentID: studentID, name: name)
             } label: {
                 Text("Save")
             }
         }
         .navigationTitle("UserID: \(userID)")
         
+    }
+    
+    func saveUserAttr(studentID: String, name: String) {
+        if(isExistUserAttr(userAttr: userAttr)) {
+            
+        } else {
+            print("\(userID) was saved")
+            let newUserAttr = UserAttr(context: context)
+            newUserAttr.userID = Int32(self.userID)
+            
+            guard let studentID_Int = Int32(studentID) else {
+                newUserAttr.studentID = Int32(self.userID)
+                newUserAttr.name = self.name
+                do {
+                    try context.save()
+                } catch {
+                    fatalError("セーブに失敗しました")
+                }
+                return
+            }
+            
+            newUserAttr.studentID = Int32(studentID_Int)
+            newUserAttr.name = self.name
+            do {
+                try context.save()
+            } catch {
+                fatalError("セーブに失敗しました")
+            }
+        }
+    }
+    
+    func isExistUserAttr(userAttr: FetchedResults<UserAttr>) -> Bool {
+        for user in userAttr {
+            if(user.userID == self.userID) {
+                return true
+            }
+        }
+        return false
     }
 }
 

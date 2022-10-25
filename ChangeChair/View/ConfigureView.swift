@@ -30,8 +30,11 @@ struct ConfigureView: View {
                 }
                 .padding()
                 
+                NavigationLink(destination: UsersAttrList()) {
+                    Text("Users Attr List")
+                }
+                
                 // TODO: 必要事項を全て入力したらボタンが出現するようにする
-                                                    
                 Button {
                     setChairLayout.pushedConfirmButton(
                         numVertical: Int(vertical)!,

@@ -13,6 +13,9 @@ struct UsersAttrList: View {
     
     @Environment(\.managedObjectContext) var context
     
+    @State var chairNum: Int
+    @State var isShowingAddUserAttrView = false
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(key: "userID", ascending: true)]
     ) var usersAttr: FetchedResults<UsersAttr>
@@ -20,11 +23,18 @@ struct UsersAttrList: View {
     var body: some View {
         VStack {
             List {
+                // to AddUserAttr View
                 Button {
-                    addUserAttr(userID: -1, studentID: 1, name: "fdsa")
+                    self.isShowingAddUserAttrView.toggle()
+                    print(createID())
                 } label: {
-                    Image(systemName: "plus")
+                    Text("ユーザー属性を追加する")
                 }
+                .sheet(isPresented: $isShowingAddUserAttrView) {
+                    AddUserAttr()
+                }
+                
+                
                 ForEach(usersAttr) { user in
                     NavigationLink(destination: UpdateUserAttr()) {
                         // TODO: かっこいいボタンを作る
@@ -38,23 +48,22 @@ struct UsersAttrList: View {
         .navigationTitle("UsersAttrList")
     }
     
-    func addUserAttr(userID: Int, studentID: Int, name: String) {
-        let newUserAttr = UsersAttr(context: context)
-        newUserAttr.userID = Int64(userID)
-        newUserAttr.studentID = Int64(studentID)
-        newUserAttr.name = name
-        
-        do {
-            try context.save()
-        } catch {
-            fatalError()
+    func createID() -> Int {
+        var ID_list: [Int] = []
+        for user in usersAttr {
+            ID_list.append(Int(user.userID))
         }
-        
+        let nextID: Int = ID_list.count
+        guard nextID <= chairNum else {
+            return -1
+        }
+        return nextID
     }
+    
 }
 
 struct UsersAttrList_Previews: PreviewProvider {
     static var previews: some View {
-        UsersAttrList()
+        UsersAttrList(chairNum: 4 * 5)
     }
 }

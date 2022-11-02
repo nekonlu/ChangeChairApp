@@ -30,7 +30,8 @@ struct ConfigureView: View {
                 }
                 .padding()
                 
-                NavigationLink(destination: UsersAttrList()) {
+                // TODO: chairNumをFixしろ
+                NavigationLink(destination: UsersAttrList(chairNum: 4 * 5)) {
                     Text("Users Attr List")
                 }
                 

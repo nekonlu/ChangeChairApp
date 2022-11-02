@@ -11,6 +11,7 @@
 		957E29D42907DE9900992559 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E29D32907DE9900992559 /* Persistent.swift */; };
 		957E29D62907DF8C00992559 /* UsersAttrList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E29D52907DF8C00992559 /* UsersAttrList.swift */; };
 		957E29D82907FD0C00992559 /* UpdateUserAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E29D72907FD0C00992559 /* UpdateUserAttr.swift */; };
+		959623FA29127E45009C4F92 /* AddUserAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959623F929127E45009C4F92 /* AddUserAttr.swift */; };
 		95ACDA6728F6D38800C0C3A3 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACDA6628F6D38800C0C3A3 /* test.swift */; };
 		95D06BF428EC551400275D7C /* ChangedChairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D06BF328EC551400275D7C /* ChangedChairView.swift */; };
 		95FBA8C328EAEC1A00DB56B9 /* ChangeChairApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBA8C228EAEC1A00DB56B9 /* ChangeChairApp.swift */; };
@@ -26,6 +27,7 @@
 		957E29D32907DE9900992559 /* Persistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
 		957E29D52907DF8C00992559 /* UsersAttrList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAttrList.swift; sourceTree = "<group>"; };
 		957E29D72907FD0C00992559 /* UpdateUserAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserAttr.swift; sourceTree = "<group>"; };
+		959623F929127E45009C4F92 /* AddUserAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserAttr.swift; sourceTree = "<group>"; };
 		95ACDA6628F6D38800C0C3A3 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		95D06BF328EC551400275D7C /* ChangedChairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangedChairView.swift; sourceTree = "<group>"; };
 		95FBA8BF28EAEC1A00DB56B9 /* ChangeChair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeChair.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 				95D06BF328EC551400275D7C /* ChangedChairView.swift */,
 				957E29D52907DF8C00992559 /* UsersAttrList.swift */,
 				957E29D72907FD0C00992559 /* UpdateUserAttr.swift */,
+				959623F929127E45009C4F92 /* AddUserAttr.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				959623FA29127E45009C4F92 /* AddUserAttr.swift in Sources */,
 				95FBA8C528EAEC1A00DB56B9 /* ContentView.swift in Sources */,
 				95ACDA6728F6D38800C0C3A3 /* test.swift in Sources */,
 				957E29D62907DF8C00992559 /* UsersAttrList.swift in Sources */,

@@ -15,25 +15,24 @@ struct UsersAttrList: View {
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(key: "userID", ascending: true)]
-    ) var usersAttr: FetchedResults <UsersAttr>
+    ) var usersAttr: FetchedResults<UsersAttr>
     
     var body: some View {
         VStack {
             List {
+                Button {
+                    addUserAttr(userID: -1, studentID: 1, name: "fdsa")
+                } label: {
+                    Image(systemName: "plus")
+                }
                 ForEach(usersAttr) { user in
                     NavigationLink(destination: UpdateUserAttr()) {
                         // TODO: かっこいいボタンを作る
                         Text("\(user.userID)")
-                        Text(user.name!)
                     }
                 }
             }
-            Button {
-                addUserAttr(userID: -1, studentID: 1, name: "fdsa")
-                
-            } label: {
-                Text("aaaa")
-            }
+            
 
         }
         .navigationTitle("UsersAttrList")

@@ -11,6 +11,8 @@ import SwiftUI
 struct AddUserAttr: View {
     
     @Environment(\.managedObjectContext) var context
+    @Environment(\.dismiss) var dismiss
+    @State var userID: Int
     @State var rawStudentID: String = ""
     @State var rawName: String = ""
     
@@ -20,10 +22,16 @@ struct AddUserAttr: View {
             TextField("Name", text: $rawName)
             
             Button {
-                // addUserAttr(userID: <#T##Int#>, studentID: <#T##Int#>, name: <#T##String#>)
+                addUserAttr(
+                    userID: userID,
+                    studentID: setStudentID(rawStudentID),
+                    name: rawName
+                )
+                dismiss()
             } label: {
                 Text("保存")
             }
+            
 
         }
     }
@@ -40,10 +48,17 @@ struct AddUserAttr: View {
             fatalError()
         }
     }
+    
+    func setStudentID(_ str: String) -> Int {
+        guard let numInt = Int(str) else {
+            return userID + 1
+        }
+        return numInt
+    }
 }
 
 struct AddUserAttr_Previews: PreviewProvider {
     static var previews: some View {
-        AddUserAttr()
+        AddUserAttr(userID: 4 * 5)
     }
 }

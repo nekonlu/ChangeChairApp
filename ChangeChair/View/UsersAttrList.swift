@@ -14,7 +14,8 @@ struct UsersAttrList: View {
     @Environment(\.managedObjectContext) var context
     
     @State var chairNum: Int
-    @State var isShowingAddUserAttrView = false
+    @State var isShowingAddUserAttrView: Bool = false
+    @State var isEnableAddButton: Bool = true
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(key: "userID", ascending: true)]
@@ -26,26 +27,34 @@ struct UsersAttrList: View {
                 // to AddUserAttr View
                 Button {
                     self.isShowingAddUserAttrView.toggle()
-                    print(createID())
+                    
                 } label: {
                     Text("ユーザー属性を追加する")
                 }
                 .sheet(isPresented: $isShowingAddUserAttrView) {
-                    AddUserAttr()
+                    AddUserAttr(userID: createID())
                 }
+                .disabled(!enableButton(num: createID()))
                 
                 
                 ForEach(usersAttr) { user in
                     NavigationLink(destination: UpdateUserAttr()) {
                         // TODO: かっこいいボタンを作る
-                        Text("\(user.userID)")
+                        Text("ID: \(user.userID), StudentID\(user.studentID), Name: " + user.name!)
                     }
-                }
+                }.onDelete(perform: removeUserAttr)
             }
             
 
         }
         .navigationTitle("UsersAttrList")
+    }
+    
+    func removeUserAttr(at offsets: IndexSet) {
+        for index in offsets {
+            let putTestCoreData = usersAttr[index]
+            context.delete(putTestCoreData)
+        }
     }
     
     func createID() -> Int {
@@ -60,6 +69,13 @@ struct UsersAttrList: View {
         return nextID
     }
     
+    func enableButton(num: Int) -> Bool {
+        if(num == -1) {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
 struct UsersAttrList_Previews: PreviewProvider {

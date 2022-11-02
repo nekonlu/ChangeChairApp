@@ -31,7 +31,7 @@ struct ConfigureView: View {
                 .padding()
                 
                 // TODO: chairNumをFixしろ
-                NavigationLink(destination: UsersAttrList(chairNum: 4 * 5)) {
+                NavigationLink(destination: UsersAttrList(chairNum: toInt(vertical) * toInt(horizontal))) {
                     Text("Users Attr List")
                 }
                 
@@ -68,6 +68,13 @@ struct ConfigureView: View {
         setChairLayout.pushedConfirmButton(
             numVertical: v,
             numHorizontal: h)
+    }
+    
+    func toInt(_ str: String) -> Int {
+        guard let numInt = Int(str) else {
+            return 0
+        }
+        return numInt
     }
     
 }

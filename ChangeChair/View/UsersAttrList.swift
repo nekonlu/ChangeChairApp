@@ -38,7 +38,7 @@ struct UsersAttrList: View {
                 
                 
                 ForEach(usersAttr) { user in
-                    NavigationLink(destination: UpdateUserAttr()) {
+                    NavigationLink(destination: UpdateUserAttr(user: user)) {
                         // TODO: かっこいいボタンを作る
                         Text("ID: \(user.userID), StudentID\(user.studentID), Name: " + user.name!)
                     }
@@ -63,7 +63,7 @@ struct UsersAttrList: View {
             ID_list.append(Int(user.userID))
         }
         let nextID: Int = ID_list.count
-        guard nextID <= chairNum else {
+        guard nextID < chairNum else {
             return -1
         }
         return nextID

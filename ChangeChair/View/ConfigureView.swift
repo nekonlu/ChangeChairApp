@@ -30,23 +30,22 @@ struct ConfigureView: View {
                 }
                 .padding()
                 
-                // TODO: chairNumをFixしろ
-                NavigationLink(destination: UsersAttrList(chairNum: toInt(vertical) * toInt(horizontal))) {
-                    Text("Users Attr List")
-                }
-                
                 // TODO: 必要事項を全て入力したらボタンが出現するようにする
                 Button {
-                    setChairLayout.pushedConfirmButton(
-                        numVertical: Int(vertical)!,
-                        numHorizontal: Int(horizontal)!)
-                    self.isShow.toggle()
+                    setSafety()
                 } label: {
                     Text("Done")
                 }
                 .fullScreenCover(isPresented: $isShow) {
                     ChangedChairView(setChairLayout: setChairLayout)
                 }
+                
+                // TODO: chairNumをFixしろ
+                NavigationLink(destination: UsersAttrList(chairNum: toInt(vertical) * toInt(horizontal))) {
+                    Text("Users Attr List")
+                }
+                
+                
             }
             .navigationTitle("Random Chair")
         }

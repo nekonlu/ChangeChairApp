@@ -27,7 +27,6 @@ struct UsersAttrList: View {
                 // to AddUserAttr View
                 Button {
                     self.isShowingAddUserAttrView.toggle()
-                    
                 } label: {
                     Text("ユーザー属性を追加する")
                 }
@@ -55,6 +54,13 @@ struct UsersAttrList: View {
             let putTestCoreData = usersAttr[index]
             context.delete(putTestCoreData)
         }
+        try? context.save()
+        var cnt = 0
+        for user in usersAttr {
+            user.userID = Int64(cnt)
+            cnt += 1
+        }
+        try? context.save()
     }
     
     func createID() -> Int {
@@ -67,6 +73,15 @@ struct UsersAttrList: View {
             return -1
         }
         return nextID
+    }
+    
+    func countUsersAttr() -> Int {
+        var ID_list: [Int] = []
+        for user in usersAttr {
+            ID_list.append(Int(user.userID))
+        }
+        let count: Int = ID_list.count
+        return count
     }
     
     func enableButton(num: Int) -> Bool {

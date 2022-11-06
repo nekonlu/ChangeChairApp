@@ -14,6 +14,11 @@ struct ConfigureView: View {
     @State var isShow: Bool = false
     @ObservedObject var setChairLayout = SetChairLayout()
     
+    @Environment(\.managedObjectContext) var context
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(key: "userID", ascending: true)]
+    ) var usersAttr: FetchedResults<UsersAttr>
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -37,7 +42,9 @@ struct ConfigureView: View {
                     Text("Done")
                 }
                 .fullScreenCover(isPresented: $isShow) {
-                    ChangedChairView(setChairLayout: setChairLayout)
+                    ChangedChairView(
+                        setChairLayout: setChairLayout,
+                        userNum: usersAttr.count)
                 }
                 
                 // TODO: chairNumをFixしろ

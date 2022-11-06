@@ -13,13 +13,13 @@ struct ChangedChairView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var context
     @ObservedObject var setChairLayout: SetChairLayout
+    @State var userNum: Int
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(key: "userID", ascending: true)]
     ) var usersAttr: FetchedResults<UsersAttr>
     
     let desplayId_ViewSize: CGFloat = 45
-    
     
     var body: some View {
         
@@ -35,18 +35,10 @@ struct ChangedChairView: View {
                 HStack {
                     ForEach(tate, id: \.self) { tableID in
                         VStack {
-                            Text("\(tableID)")
-                                .font(.title3)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .frame(width: desplayId_ViewSize,
-                                       height: desplayId_ViewSize)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                )
-                            
+                            ChairUI(
+                                tableID: tableID,
+                                userNum: userNum)
                         }
-                        
                     }
                 }
             }
@@ -63,7 +55,7 @@ struct ChangedChairView: View {
                 Text("戻る")
             }
             
-            // Preview Only
+            // Preview & Debug Only
             Button {
                 setChairLayout.pushedConfirmButton(
                     numVertical: 6,
@@ -77,13 +69,20 @@ struct ChangedChairView: View {
             } label: {
                 Text("Reset")
             }
+            Button {
+                print(usersAttr.count)
+            } label: {
+                Text("usersAttr.count")
+            }
             // End
         }
     }
+    
+    
 }
 
 struct ChangedChairView_Previews: PreviewProvider {
     static var previews: some View {
-        ChangedChairView(setChairLayout: SetChairLayout())
+        ChangedChairView(setChairLayout: SetChairLayout(), userNum: 3)
     }
 }

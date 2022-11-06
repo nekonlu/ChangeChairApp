@@ -14,6 +14,8 @@
 		959623FA29127E45009C4F92 /* AddUserAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959623F929127E45009C4F92 /* AddUserAttr.swift */; };
 		95ACDA6728F6D38800C0C3A3 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACDA6628F6D38800C0C3A3 /* test.swift */; };
 		95D06BF428EC551400275D7C /* ChangedChairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D06BF328EC551400275D7C /* ChangedChairView.swift */; };
+		95F56D79291747B800B0D7C6 /* UAPropaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F56D78291747B800B0D7C6 /* UAPropaty.swift */; };
+		95F56D7B29174C2600B0D7C6 /* ChairUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F56D7A29174C2600B0D7C6 /* ChairUI.swift */; };
 		95FBA8C328EAEC1A00DB56B9 /* ChangeChairApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBA8C228EAEC1A00DB56B9 /* ChangeChairApp.swift */; };
 		95FBA8C528EAEC1A00DB56B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBA8C428EAEC1A00DB56B9 /* ContentView.swift */; };
 		95FBA8C728EAEC1C00DB56B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FBA8C628EAEC1C00DB56B9 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 		959623F929127E45009C4F92 /* AddUserAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserAttr.swift; sourceTree = "<group>"; };
 		95ACDA6628F6D38800C0C3A3 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		95D06BF328EC551400275D7C /* ChangedChairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangedChairView.swift; sourceTree = "<group>"; };
+		95F56D78291747B800B0D7C6 /* UAPropaty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UAPropaty.swift; sourceTree = "<group>"; };
+		95F56D7A29174C2600B0D7C6 /* ChairUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChairUI.swift; sourceTree = "<group>"; };
 		95FBA8BF28EAEC1A00DB56B9 /* ChangeChair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeChair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FBA8C228EAEC1A00DB56B9 /* ChangeChairApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeChairApp.swift; sourceTree = "<group>"; };
 		95FBA8C428EAEC1A00DB56B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				957E29D52907DF8C00992559 /* UsersAttrList.swift */,
 				957E29D72907FD0C00992559 /* UpdateUserAttr.swift */,
 				959623F929127E45009C4F92 /* AddUserAttr.swift */,
+				95F56D7A29174C2600B0D7C6 /* ChairUI.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				95FBA8D328EB231000DB56B9 /* ChangeChairLogic.swift */,
+				95F56D78291747B800B0D7C6 /* UAPropaty.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -190,9 +196,11 @@
 				957E29D22907DD8100992559 /* Model.xcdatamodeld in Sources */,
 				957E29D42907DE9900992559 /* Persistent.swift in Sources */,
 				957E29D82907FD0C00992559 /* UpdateUserAttr.swift in Sources */,
+				95F56D7B29174C2600B0D7C6 /* ChairUI.swift in Sources */,
 				95FBA8D428EB231000DB56B9 /* ChangeChairLogic.swift in Sources */,
 				95FBA8D628EB232F00DB56B9 /* ConfigureView.swift in Sources */,
 				95D06BF428EC551400275D7C /* ChangedChairView.swift in Sources */,
+				95F56D79291747B800B0D7C6 /* UAPropaty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

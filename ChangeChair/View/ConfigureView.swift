@@ -23,13 +23,15 @@ struct ConfigureView: View {
         NavigationView {
             VStack {
                 VStack(alignment: .leading) {
-                    Text("Chair layout")
+                    Text("席のレイアウト")
                         .font(.title2)
                         .fontWeight(.bold)
                     HStack {
-                        TextField("Vertical", text: $vertical)
+                        TextField("縦の椅子の数", text: $vertical)
+                            .keyboardType(.numberPad)
                         Image(systemName: "multiply")
-                        TextField("Horizontal", text: $horizontal)
+                        TextField("横の椅子の数", text: $horizontal)
+                            .keyboardType(.numberPad)
                     }
                     
                 }
@@ -39,7 +41,14 @@ struct ConfigureView: View {
                 Button {
                     setSafety()
                 } label: {
-                    Text("Done")
+                    Text("席替えする")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundColor(.black)
+                        )
                 }
                 .fullScreenCover(isPresented: $isShow) {
                     ChangedChairView(
@@ -49,9 +58,8 @@ struct ConfigureView: View {
                 
                 // TODO: chairNumをFixしろ
                 NavigationLink(destination: UsersAttrList(chairNum: toInt(vertical) * toInt(horizontal))) {
-                    Text("Users Attr List")
+                    Text("設定")
                 }
-                
                 
             }
             .navigationTitle("Random Chair")

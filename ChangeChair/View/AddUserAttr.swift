@@ -19,6 +19,7 @@ struct AddUserAttr: View {
     var body: some View {
         VStack {
             TextField("StudentID", text: $rawStudentID)
+                .keyboardType(.numberPad)
             TextField("Name", text: $rawName)
             
             Button {

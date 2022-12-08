@@ -21,7 +21,8 @@ struct ChairUI: View {
     var body: some View {
         if(tableID <= userNum) {
             VStack {
-                Text("\(usersAttr[tableID - 1].studentID)")
+                Text(getComma(Int(usersAttr[tableID - 1].studentID)))
+                    .fontWeight(.bold)
                 Text(usersAttr[tableID - 1].name!)
             }
             .font(.caption)
@@ -44,6 +45,16 @@ struct ChairUI: View {
                 RoundedRectangle(cornerRadius: 10)
             )
         }
+    }
+    
+    func getComma(_ num: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = ""
+        formatter.groupingSize = 3
+        let number = "\(formatter.string(from: NSNumber(value: num)) ?? "")"
+        
+        return number
     }
 }
 

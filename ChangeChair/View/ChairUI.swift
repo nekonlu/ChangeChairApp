@@ -29,8 +29,10 @@ struct ChairUI: View {
             .foregroundColor(.white)
             .frame(width: 45,
                    height: 45)
+            
             .background(
                 RoundedRectangle(cornerRadius: 10)
+                    .fill(usersAttr[tableID - 1].isFront ? .blue : .black)
             )
         } else {
             VStack {

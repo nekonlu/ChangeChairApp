@@ -15,12 +15,16 @@ struct AddUserAttr: View {
     @State var userID: Int
     @State var rawStudentID: String = ""
     @State var rawName: String = ""
+    @State var isFront: Bool = false
     
     var body: some View {
         VStack {
             TextField("StudentID", text: $rawStudentID)
                 .keyboardType(.numberPad)
             TextField("Name", text: $rawName)
+            Toggle(isOn: $isFront) {
+                Text("前席希望")
+            }
             
             Button {
                 addUserAttr(
@@ -33,8 +37,9 @@ struct AddUserAttr: View {
                 Text("保存")
             }
             
-
+            
         }
+        .padding(30)
     }
     
     func addUserAttr(userID: Int, studentID: Int, name: String) {
@@ -42,6 +47,7 @@ struct AddUserAttr: View {
         newUserAttr.userID = Int64(userID)
         newUserAttr.studentID = Int64(studentID)
         newUserAttr.name = name
+        newUserAttr.isFront = isFront
         
         do {
             try context.save()

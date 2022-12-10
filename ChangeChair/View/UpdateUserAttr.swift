@@ -19,8 +19,9 @@ import SwiftUI
 struct UpdateUserAttr: View {
     @Environment(\.managedObjectContext) var context
     @Environment(\.dismiss) var dismiss
-    @State var rawStudentID: String = ""
-    @State var rawName: String = ""
+    @State var rawStudentID: String
+    @State var rawName: String
+    @State var isFront: Bool
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(key: "userID", ascending: true)]
@@ -30,21 +31,44 @@ struct UpdateUserAttr: View {
     
     var body: some View {
         VStack {
-            TextField("StudentID", text: $rawStudentID)
-                .keyboardType(.numberPad)
-            TextField("Name", text: $rawName)
+            VStack(alignment: .leading) {
+                Text("出席番号")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                TextField("StudentID", text: $rawStudentID)
+                    .keyboardType(.numberPad)
+                Text("名前")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                TextField("Name", text: $rawName)
+                Toggle(isOn: $isFront) {
+                    Text("前席希望")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                }
+            }
+            
             
             Button {
                 user.studentID = Int64(setStudentID(rawStudentID))
                 user.name = self.rawName
+                user.isFront = isFront
                 try? context.save()
                 dismiss()
             } label: {
                 Text("保存")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(.black)
+                    )
             }
             
 
         }
+        .padding(30)
     }
     
     func setStudentID(_ str: String) -> Int {

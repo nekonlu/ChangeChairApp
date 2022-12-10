@@ -53,28 +53,35 @@ struct ChangedChairView: View {
                 dismiss()
             } label: {
                 Text("戻る")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(.black)
+                    )
             }
             
-            // Preview & Debug Only
-            Button {
-                setChairLayout.pushedConfirmButton(
-                    numVertical: 6,
-                    numHorizontal: 7)
-            } label: {
-                Text("Set")
-            }
-            Button {
-                setChairLayout.chairTable = []
-                print("\(usersAttr[20].userID)")
-            } label: {
-                Text("Reset")
-            }
-            Button {
-                print(usersAttr.count)
-            } label: {
-                Text("usersAttr.count")
-            }
-            // End
+//            // Preview & Debug Only
+//            Button {
+//                setChairLayout.pushedConfirmButton(
+//                    numVertical: 6,
+//                    numHorizontal: 7)
+//            } label: {
+//                Text("Set")
+//            }
+//            Button {
+//                setChairLayout.chairTable = []
+//                print("\(usersAttr[20].userID)")
+//            } label: {
+//                Text("Reset")
+//            }
+//            Button {
+//                print(usersAttr.count)
+//            } label: {
+//                Text("usersAttr.count")
+//            }
+//            // End
         }
     }
     

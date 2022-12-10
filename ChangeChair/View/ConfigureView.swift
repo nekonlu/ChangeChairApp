@@ -33,7 +33,6 @@ struct ConfigureView: View {
                         TextField("横の椅子の数", text: $horizontal)
                             .keyboardType(.numberPad)
                     }
-                    
                 }
                 .padding()
                 
@@ -60,7 +59,6 @@ struct ConfigureView: View {
                 NavigationLink(destination: UsersAttrList(chairNum: toInt(vertical) * toInt(horizontal))) {
                     Text("設定")
                 }
-                
             }
             .navigationTitle("Random Chair")
         }

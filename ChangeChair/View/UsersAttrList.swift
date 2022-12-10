@@ -37,9 +37,18 @@ struct UsersAttrList: View {
                 
                 
                 ForEach(usersAttr) { user in
-                    NavigationLink(destination: UpdateUserAttr(user: user)) {
-                        // TODO: かっこいいボタンを作る
-                        Text("ID: \(user.userID), StudentID\(user.studentID), Name: " + user.name!)
+                    NavigationLink(destination: UpdateUserAttr(
+                        rawStudentID: String(user.studentID),
+                        rawName: user.name!,
+                        isFront: user.isFront,
+                        user: user
+                    )) {
+                        VStack(alignment: .leading) {
+                            // TODO: かっこいいボタンを作る
+                            Text("ID: \(user.userID), StudentID: \(user.studentID)")
+                            Text("Name: " + user.name!)
+                            Text("isFront: " + String(user.isFront))
+                        }
                     }
                 }.onDelete(perform: removeUserAttr)
             }

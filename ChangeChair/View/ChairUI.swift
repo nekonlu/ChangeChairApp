@@ -21,9 +21,9 @@ struct ChairUI: View {
     var body: some View {
         if(tableID <= userNum) {
             VStack {
-                Text(getComma(Int(usersAttr[tableID - 1].studentID)))
+                Text(getComma(Int(usersAttr[tableID].studentID)))
                     .fontWeight(.bold)
-                Text(usersAttr[tableID - 1].name!)
+                Text(usersAttr[tableID].name!)
             }
             .font(.caption)
             .foregroundColor(.white)
@@ -32,7 +32,7 @@ struct ChairUI: View {
             
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(usersAttr[tableID - 1].isFront ? .blue : .black)
+                    .fill(usersAttr[tableID].isFront ? .blue : .black)
             )
         } else {
             VStack {

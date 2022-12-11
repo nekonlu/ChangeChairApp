@@ -21,25 +21,32 @@ class SetChairLayout: ObservableObject {
         let randomArray: [Int] = self.noOverlappingRandom(num: self.numVertical * self.numHorizontal)
         self.alignmentArray(array: randomArray)
         
-        print(chairTable)
+        swapChair(userID: 17, targetY: 3, targetX: 0)
+        swapChair(userID: 8, targetY: 2, targetX: 6)
+        swapChair(userID: 41, targetY: 5, targetX: 5)
+        
+        swapChair(userID: 35, targetY: 0, targetX: Int.random(in: 0..<numHorizontal))
     }
     
-    // 特別な事情がある人用
-    func swapChair(tableID: Int, targetY: Int, targetX: Int) {
-        var pos6_x: Int = 0
-        var pos6_y: Int = 0
+    // 特別な事情がある方用
+    func swapChair(userID: Int, targetY: Int, targetX: Int) {
+        // targetY, targetXにswapさせたいuserIDの座標
+        var posY: Int = 0
+        var posX: Int = 0
         
-        for i in 0 ..< numVertical {
-            for j in 0 ..< numHorizontal {
-                if chairTable[i][j] == tableID {
-                    pos6_y = i
-                    pos6_x = j
+    for_i: for i_Y in 0 ..< chairTable.count {
+            for j_X in 0 ..< chairTable[0].count {
+                if chairTable[i_Y][j_X] == userID {
+                    posY = i_Y
+                    posX = j_X
+                    break for_i
                 }
             }
         }
         
-        chairTable[pos6_y][pos6_x] = chairTable[4][0]
-        chairTable[targetY][targetX] = tableID
+        var foo = self.chairTable[posY][posX]
+        self.chairTable[posY][posX] = self.chairTable[targetY][targetX]
+        self.chairTable[targetY][targetX] = foo
     }
     
     func alignmentArray(array: [Int]) {
@@ -57,7 +64,7 @@ class SetChairLayout: ObservableObject {
     func noOverlappingRandom(num: Int) -> [Int] {
         var array: [Int] = []
         for i in 0..<num {
-            array.append(i + 1)
+            array.append(i)
         }
         
         for i in 0..<num {
